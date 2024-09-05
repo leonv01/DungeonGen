@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://bnn63i84y54ko"]
+
+[ext_resource type="Material" uid="uid://bubj5kdxng2np" path="res://MAT/BorderMat.tres" id="1_inswg"]
+[ext_resource type="Material" uid="uid://bb75ervjysm1" path="res://MAT/HallwayMat.tres" id="1_o32yp"]
+[ext_resource type="Material" uid="uid://dqg7o1md3umpo" path="res://MAT/DoorMat.tres" id="2_unc6r"]
+[ext_resource type="Material" uid="uid://b5lyi8bilmoqy" path="res://MAT/RoomMat.tres" id="4_r865a"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_c1dt1"]
+
+[node name="DungeonTiles" type="Node3D"]
+
+[node name="HallwayTile" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+material_override = ExtResource("1_o32yp")
+mesh = SubResource("BoxMesh_c1dt1")
+
+[node name="BorderTile" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+material_override = ExtResource("1_inswg")
+mesh = SubResource("BoxMesh_c1dt1")
+
+[node name="DoorTile" type="MeshInstance3D" parent="."]
+material_override = ExtResource("2_unc6r")
+mesh = SubResource("BoxMesh_c1dt1")
+
+[node name="RoomTile" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+material_override = ExtResource("4_r865a")
+mesh = SubResource("BoxMesh_c1dt1")

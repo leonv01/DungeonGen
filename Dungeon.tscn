@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://cc3cpjktct6de"]
+
+[ext_resource type="Script" path="res://dungeon_gen.gd" id="1_vakig"]
+[ext_resource type="Script" path="res://free_look_camera.gd" id="3_bmdgc"]
+[ext_resource type="MeshLibrary" uid="uid://dc2twvjkwfpqt" path="res://MeshLib.tres" id="4_2n8bm"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_l4bq1"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_ne4kj"]
+sky_material = SubResource("ProceduralSkyMaterial_l4bq1")
+
+[sub_resource type="Environment" id="Environment_k72du"]
+background_mode = 2
+sky = SubResource("Sky_ne4kj")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Dungeon" type="Node3D"]
+script = ExtResource("1_vakig")
+min_room_size = 5
+max_room_size = 15
+dungeon_width = 100
+dungeon_height = 100
+seed = 20
+room_count = 15
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_k72du")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("4_2n8bm")
+cell_size = Vector3(1, 1, 1)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.872982, 0.487753, 0, -0.487753, 0.872982, 0, 9.68313, 9.18928)
+script = ExtResource("3_bmdgc")
